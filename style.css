@@ -1,1 +1,3091 @@
+/* ============================================================
+   RESET
+============================================================ */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #120c0e;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(111, 37, 53, 0.2),
+      transparent 45%
+    ),
+    #120c0e;
+
+  color: #f5eee9;
+
+  font-family: "Inter", sans-serif;
+
+  overflow-x: hidden;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ============================================================
+   VARIABLES
+============================================================ */
+
+:root {
+
+  --burgundy: #641f32;
+  --burgundy-light: #8f3e57;
+
+  --rose: #d18a9f;
+
+  --cream: #f4e9dc;
+  --champagne: #d8b88a;
+
+  --charcoal: #120c0e;
+  --charcoal-2: #1c1114;
+
+  --white: #fff8f2;
+
+  --muted: rgba(245, 238, 233, 0.62);
+
+  --border: rgba(244, 233, 220, 0.13);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.eyebrow {
+  display: inline-block;
+
+  color: var(--champagne);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   PRELOADER
+============================================================ */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+
+  background: #10090b;
+
+  transition:
+    opacity 1s var(--ease),
+    visibility 1s;
+}
+
+.preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-inner {
+  width: min(80%, 360px);
+  text-align: center;
+}
+
+.preloader-small {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: var(--muted);
+
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.preloader h1 {
+  margin-bottom: 25px;
+
+  font-size: clamp(3rem, 14vw, 7rem);
+
+  font-weight: 400;
+}
+
+.loader-line {
+  width: 100%;
+  height: 1px;
+
+  overflow: hidden;
+
+  background: rgba(255,255,255,0.12);
+}
+
+.loader-line span {
+  display: block;
+
+  width: 0;
+  height: 100%;
+
+  background: var(--champagne);
+
+  animation: loading 1.8s var(--ease) forwards;
+}
+
+@keyframes loading {
+  to {
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   AMBIENT BACKGROUND
+============================================================ */
+
+.ambient-background {
+  position: fixed;
+  inset: 0;
+
+  z-index: -5;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+.window-glow {
+  position: absolute;
+
+  top: 10%;
+  right: -15%;
+
+  width: 60vw;
+  height: 60vw;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(196, 118, 143, 0.12),
+      transparent 65%
+    );
+
+  filter: blur(30px);
+}
+
+.city-lights {
+  position: absolute;
+  inset: auto 0 0;
+
+  height: 35%;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 90%,
+      rgba(214, 173, 102, 0.12),
+      transparent 15%
+    ),
+    radial-gradient(
+      ellipse at 75% 85%,
+      rgba(180, 75, 105, 0.12),
+      transparent 20%
+    );
+
+  filter: blur(15px);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.035;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+
+/* ============================================================
+   RAIN
+============================================================ */
+
+.rain {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.18;
+}
+
+.drop {
+  position: absolute;
+
+  top: -10%;
+
+  width: 1px;
+  height: 60px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(255,255,255,0.4)
+    );
+
+  animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+  from {
+    transform: translate3d(0, -100px, 0);
+  }
+
+  to {
+    transform: translate3d(-100px, 120vh, 0);
+  }
+}
+
+
+/* ============================================================
+   OPENING
+============================================================ */
+
+.opening {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100;
+
+  display: grid;
+  place-items: center;
+
+  padding: 30px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(105, 31, 52, 0.3),
+      transparent 45%
+    ),
+    #120b0d;
+
+  transition:
+    opacity 1s var(--ease),
+    visibility 1s;
+}
+
+.opening.closed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.opening-content {
+  width: min(600px, 100%);
+  text-align: center;
+
+  animation: openingIn 1.5s var(--ease);
+}
+
+@keyframes openingIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.opening h1 {
+  margin-top: 20px;
+
+  font-size: clamp(4rem, 20vw, 10rem);
+
+  line-height: 0.8;
+}
+
+.opening h1 span {
+  display: block;
+
+  color: var(--rose);
+
+  font-family: "Parisienne", cursive;
+
+  font-size: 0.8em;
+}
+
+.opening p {
+  max-width: 420px;
+
+  margin: 35px auto;
+
+  color: var(--muted);
+}
+
+.opening-bottom {
+  position: absolute;
+
+  bottom: 35px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  color: rgba(255,255,255,0.35);
+
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+}
+
+.scroll-line {
+  width: 50px;
+  height: 1px;
+
+  background: rgba(255,255,255,0.2);
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  min-height: 54px;
+
+  padding: 0 25px;
+
+  border: 1px solid rgba(244,233,220,0.25);
+  border-radius: 100px;
+
+  background: rgba(255,255,255,0.05);
+
+  color: var(--cream);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.4s var(--ease),
+    background 0.4s,
+    border-color 0.4s;
+}
+
+.primary-button:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255,255,255,0.1);
+
+  border-color: var(--champagne);
+}
+
+.button-arrow {
+  color: var(--champagne);
+
+  transition:
+    transform 0.4s var(--ease);
+}
+
+.primary-button:hover .button-arrow {
+  transform: translateX(5px);
+}
+
+
+/* ============================================================
+   MUSIC
+============================================================ */
+
+.music-button {
+  position: fixed;
+
+  top: 20px;
+  right: 20px;
+
+  z-index: 90;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 100px;
+
+  background: rgba(18,12,14,0.65);
+
+  color: var(--cream);
+
+  backdrop-filter: blur(15px);
+
+  cursor: pointer;
+}
+
+.music-icon {
+  color: var(--champagne);
+}
+
+.music-button.playing .music-icon {
+  animation: musicPulse 0.8s infinite alternate;
+}
+
+@keyframes musicPulse {
+  from {
+    transform: scale(0.9);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.music-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+
+/* ============================================================
+   SITE
+============================================================ */
+
+.site.hidden {
+  display: none;
+}
+
+.section {
+  position: relative;
+
+  width: min(1180px, calc(100% - 40px));
+
+  margin: 0 auto;
+
+  padding: 130px 0;
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.navigation {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 80;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: 22px 30px;
+
+  background:
+    linear-gradient(
+      rgba(18,12,14,0.75),
+      transparent
+    );
+
+  backdrop-filter: blur(5px);
+}
+
+.nav-logo {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 1.2rem;
+
+  color: var(--cream);
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+
+  color: rgba(255,255,255,0.6);
+
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--cream);
+}
+
+.menu-button {
+  display: none;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: none;
+
+  padding:
+    120px
+    max(40px, 8vw)
+    80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.hero-image-wrapper {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    saturate(0.75)
+    brightness(0.55);
+
+  transform: scale(1.04);
+
+  transition: transform 2s var(--ease);
+}
+
+.hero:hover .hero-image {
+  transform: scale(1.08);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18,12,14,0.95),
+      rgba(18,12,14,0.45),
+      rgba(18,12,14,0.7)
+    );
+}
+
+.hero-content {
+  position: relative;
+
+  width: min(900px, 100%);
+
+  margin-right: auto;
+
+  z-index: 2;
+}
+
+.hero-title {
+  margin: 20px 0 25px;
+
+  font-size: clamp(4rem, 12vw, 9rem);
+
+  line-height: 0.82;
+
+  letter-spacing: -0.045em;
+}
+
+.hero-title em {
+  color: var(--rose);
+  font-style: normal;
+}
+
+.hero-description {
+  max-width: 520px;
+
+  color: var(--muted);
+
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+.hero-scroll {
+  position: absolute;
+
+  right: 30px;
+  bottom: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: rgba(255,255,255,0.4);
+
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+
+  transform: rotate(90deg);
+}
+
+.hero-scroll .line {
+  width: 60px;
+  height: 1px;
+
+  background: rgba(255,255,255,0.25);
+}
+
+
+/* ============================================================
+   SECTION TITLES
+============================================================ */
+
+.section-heading {
+  max-width: 760px;
+
+  margin-bottom: 70px;
+}
+
+.section-title {
+  margin-top: 15px;
+
+  font-size: clamp(3rem, 8vw, 6rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.03em;
+}
+
+
+/* ============================================================
+   STORY
+============================================================ */
+
+.story-intro {
+  min-height: 80vh;
+
+  display: grid;
+  grid-template-columns: 100px 1fr;
+
+  align-items: center;
+}
+
+.section-number {
+  color: var(--champagne);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+
+.story-intro-content {
+  max-width: 800px;
+}
+
+.large-text {
+  margin:
+    35px
+    0
+    25px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(2rem, 5vw, 4rem);
+
+  line-height: 1.05;
+
+  color: var(--cream);
+}
+
+.body-text {
+  max-width: 600px;
+
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   CHAPTERS
+============================================================ */
+
+.chapters {
+  width: 100%;
+  max-width: none;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.chapter-card {
+  min-height: 560px;
+
+  padding: clamp(30px, 5vw, 70px);
+
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.015)
+    );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  transition:
+    transform 0.8s var(--ease),
+    background 0.8s;
+}
+
+.chapter-card:hover {
+  transform: translateY(-10px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.09),
+      rgba(255,255,255,0.02)
+    );
+}
+
+.chapter-dark {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(102,31,50,0.35),
+      rgba(18,12,14,0.6)
+    );
+}
+
+.chapter-number {
+  margin-bottom: auto;
+
+  color: var(--champagne);
+
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+}
+
+.chapter-card h2 {
+  margin-bottom: 10px;
+
+  font-size: clamp(2.8rem, 5vw, 5rem);
+}
+
+.chapter-date {
+  color: var(--rose);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+.chapter-card p {
+  margin-top: 25px;
+
+  color: var(--muted);
+}
+
+.chapter-detail {
+  margin-top: 25px;
+  padding-top: 20px;
+
+  border-top: 1px solid var(--border);
+
+  color: rgba(255,255,255,0.45);
+
+  font-size: 0.8rem;
+}
+
+
+/* ============================================================
+   TIMELINE
+============================================================ */
+
+.timeline-section {
+  max-width: 900px;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 105px;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      var(--champagne),
+      rgba(255,255,255,0.05)
+    );
+}
+
+.timeline-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 180px 1fr;
+
+  gap: 50px;
+
+  padding: 55px 0;
+}
+
+.timeline-dot {
+  position: absolute;
+
+  left: 100px;
+  top: 62px;
+
+  width: 11px;
+  height: 11px;
+
+  border: 2px solid var(--champagne);
+
+  border-radius: 50%;
+
+  background: var(--charcoal);
+
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 0 20px rgba(216,184,138,0.3);
+}
+
+.timeline-date {
+  color: var(--champagne);
+
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.timeline-content {
+  padding-left: 20px;
+}
+
+.timeline-content span {
+  color: var(--rose);
+
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+}
+
+.timeline-content h3 {
+  margin: 8px 0;
+
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.timeline-content p {
+  max-width: 500px;
+
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   RAIN SECTION
+============================================================ */
+
+.rain-section {
+  width: 100%;
+  max-width: none;
+
+  padding:
+    100px
+    30px;
+}
+
+.rain-window {
+  position: relative;
+
+  min-height: 75vh;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.1);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74,31,44,0.25),
+      rgba(0,0,0,0.45)
+    );
+
+  box-shadow:
+    inset 0 0 100px rgba(0,0,0,0.4);
+}
+
+.rain-window::before,
+.rain-window::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.rain-window::before {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 90px,
+      rgba(255,255,255,0.04) 91px,
+      transparent 92px
+    );
+}
+
+.rain-window::after {
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(216,184,138,0.1),
+      transparent 25%
+    );
+}
+
+.rain-quote {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 700px;
+
+  padding: 30px;
+
+  text-align: center;
+}
+
+.rain-quote h2 {
+  margin: 25px 0;
+
+  font-size: clamp(3rem, 8vw, 7rem);
+
+  line-height: 0.9;
+}
+
+.rain-quote p {
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   MEMORY GRID
+============================================================ */
+
+.memories-section {
+  width: min(1100px, calc(100% - 40px));
+}
+
+.memory-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.memory-card {
+  min-height: 300px;
+
+  padding: 40px;
+
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.04),
+      transparent
+    );
+
+  transition:
+    transform 0.6s var(--ease),
+    border-color 0.6s;
+}
+
+.memory-card:hover {
+  transform: translateY(-8px);
+
+  border-color:
+    rgba(216,184,138,0.4);
+}
+
+.memory-icon {
+  display: block;
+
+  margin-bottom: 70px;
+
+  color: var(--champagne);
+
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+}
+
+.memory-card h3 {
+  margin-bottom: 15px;
+
+  font-size: 2.3rem;
+}
+
+.memory-card p {
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   GALLERY
+============================================================ */
+
+.gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(12, 1fr);
+
+  gap: 15px;
+}
+
+.gallery-item {
+  position: relative;
+
+  grid-column: span 4;
+
+  min-height: 330px;
+
+  overflow: hidden;
+
+  background: #211417;
+
+  cursor: pointer;
+}
+
+.gallery-large {
+  grid-column: span 8;
+  grid-row: span 2;
+
+  min-height: 675px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 1s var(--ease),
+    filter 1s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.07);
+
+  filter: brightness(0.75);
+}
+
+.gallery-caption {
+  position: absolute;
+
+  left: 20px;
+  bottom: 20px;
+
+  color: white;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 1.5rem;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 0.4s,
+    transform 0.4s var(--ease);
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   LETTERS
+============================================================ */
+
+.letters-section {
+  max-width: 900px;
+}
+
+.envelopes {
+  display: grid;
+
+  gap: 12px;
+}
+
+.envelope {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 60px 1fr auto;
+
+  align-items: center;
+
+  gap: 20px;
+
+  width: 100%;
+
+  padding: 25px;
+
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.015)
+    );
+
+  color: var(--cream);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.5s var(--ease),
+    border-color 0.5s,
+    background 0.5s;
+}
+
+.envelope:hover {
+  transform: translateX(10px);
+
+  border-color:
+    rgba(216,184,138,0.45);
+}
+
+.envelope-number {
+  color: var(--champagne);
+
+  font-size: 0.7rem;
+}
+
+.envelope-title {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(1.4rem, 4vw, 2rem);
+}
+
+.envelope-open {
+  color: var(--muted);
+
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+}
+
+
+/* ============================================================
+   LETTER MODAL
+============================================================ */
+
+.letter-modal,
+.password-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 200;
+
+  display: grid;
+  place-items: center;
+
+  padding: 20px;
+
+  background:
+    rgba(8,5,6,0.85);
+
+  backdrop-filter: blur(15px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.5s,
+    visibility 0.5s;
+}
+
+.letter-modal.open,
+.password-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-close {
+  position: absolute;
+
+  top: 25px;
+  right: 25px;
+
+  width: 45px;
+  height: 45px;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.05);
+
+  color: white;
+
+  font-size: 1.5rem;
+
+  cursor: pointer;
+
+  z-index: 5;
+}
+
+.letter-paper {
+  width: min(760px, 100%);
+
+  max-height: 85vh;
+
+  overflow-y: auto;
+
+  padding:
+    clamp(30px, 7vw, 80px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4e9dc,
+      #ead8c5
+    );
+
+  color: #28171b;
+
+  box-shadow:
+    0 40px 100px rgba(0,0,0,0.5);
+
+  transform:
+    translateY(40px)
+    rotateX(8deg);
+
+  transition:
+    transform 0.8s var(--ease);
+}
+
+.letter-modal.open .letter-paper {
+  transform:
+    translateY(0)
+    rotateX(0);
+}
+
+.letter-label {
+  color: #8b5d66;
+
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+}
+
+.letter-paper h3 {
+  margin: 25px 0;
+
+  font-size: 3rem;
+}
+
+.letter-paper p {
+  margin: 0 0 22px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 1.25rem;
+
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   NUMBERS
+============================================================ */
+
+.numbers-section {
+  max-width: 1000px;
+}
+
+.numbers-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+}
+
+.number-card {
+  padding: 40px 20px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+  text-align: center;
+}
+
+.number-card strong {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(3rem, 7vw, 5rem);
+
+  font-weight: 400;
+
+  color: var(--cream);
+}
+
+.number-card span {
+  display: block;
+
+  color: var(--champagne);
+
+  font-size: 0.55rem;
+  letter-spacing: 0.16em;
+}
+
+.number-card small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--muted);
+
+  font-size: 0.55rem;
+}
+
+
+/* ============================================================
+   SECRET
+============================================================ */
+
+.secret-section {
+  min-height: 80vh;
+
+  display: grid;
+  place-items: center;
+}
+
+.secret-box {
+  width: min(700px, 100%);
+
+  padding:
+    clamp(40px, 8vw, 100px);
+
+  border: 1px solid var(--border);
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(104,31,50,0.25),
+      transparent 70%
+    );
+}
+
+.secret-box h2 {
+  margin: 15px 0;
+
+  font-size: clamp(4rem, 12vw, 9rem);
+}
+
+.secret-box p {
+  margin-bottom: 30px;
+
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   PASSWORD
+============================================================ */
+
+.password-box {
+  position: relative;
+
+  width: min(450px, 100%);
+
+  padding: 50px 30px;
+
+  border: 1px solid var(--border);
+
+  background: #1c1114;
+
+  text-align: center;
+}
+
+.password-box h2 {
+  margin: 15px 0 25px;
+
+  font-size: 3rem;
+}
+
+.password-box input {
+  width: 100%;
+
+  height: 55px;
+
+  margin-bottom: 15px;
+
+  padding: 0 18px;
+
+  border:
+    1px solid
+    var(--border);
+
+  outline: none;
+
+  background:
+    rgba(255,255,255,0.04);
+
+  color: white;
+
+  text-align: center;
+}
+
+.password-error {
+  min-height: 25px;
+
+  margin-top: 15px;
+
+  color: #d9899c;
+
+  font-size: 0.75rem;
+}
+
+
+/* ============================================================
+   SECRET MESSAGE
+============================================================ */
+
+.secret-message {
+  display: none;
+
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: none;
+
+  place-items: center;
+
+  padding: 50px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(100,31,50,0.35),
+      transparent 60%
+    );
+}
+
+.secret-message.visible {
+  display: grid;
+
+  animation: secretIn 2s var(--ease);
+}
+
+@keyframes secretIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.secret-message-inner {
+  width: min(750px, 100%);
+
+  text-align: center;
+}
+
+.secret-message h2 {
+  margin: 30px 0;
+
+  font-size: clamp(3rem, 8vw, 6rem);
+
+  line-height: 0.95;
+}
+
+.typing-text {
+  min-height: 130px;
+
+  color: var(--muted);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+
+  line-height: 1.7;
+}
+
+.secret-ending {
+  margin-top: 40px;
+
+  color: var(--rose);
+
+  font-family: "Parisienne", cursive;
+
+  font-size: clamp(3rem, 9vw, 6rem);
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 1.5s var(--ease),
+    transform 1.5s var(--ease);
+}
+
+.secret-ending.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   FINAL
+============================================================ */
+
+.final-section {
+  width: 100%;
+  max-width: none;
+
+  padding:
+    160px
+    max(30px, 8vw);
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(100,31,50,0.12)
+    );
+}
+
+.final-content {
+  width: min(900px, 100%);
+
+  margin: auto;
+}
+
+.final-title {
+  margin:
+    25px
+    0
+    70px;
+
+  font-size: clamp(5rem, 14vw, 11rem);
+
+  line-height: 0.75;
+}
+
+.final-letter {
+  max-width: 680px;
+}
+
+.final-letter p {
+  margin-bottom: 30px;
+
+  color: rgba(245,238,233,0.75);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+
+  line-height: 1.65;
+}
+
+.signature {
+  margin-top: 70px;
+
+  color: var(--rose);
+
+  font-family: "Parisienne", cursive;
+
+  font-size: 4rem;
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer {
+  padding: 80px 30px;
+
+  border-top: 1px solid var(--border);
+
+  text-align: center;
+}
+
+.footer-symbol {
+  margin-bottom: 15px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 2rem;
+}
+
+.footer p {
+  color: var(--muted);
+
+  font-size: 0.75rem;
+}
+
+.footer span {
+  display: block;
+
+  margin-top: 20px;
+
+  color: rgba(255,255,255,0.3);
+
+  font-size: 0.6rem;
+}
+
+
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+
+  z-index: 300;
+
+  display: grid;
+  place-items: center;
+
+  padding: 30px;
+
+  background:
+    rgba(5,3,4,0.92);
+
+  backdrop-filter: blur(15px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.5s,
+    visibility 0.5s;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-inner {
+  width: min(1000px, 100%);
+
+  text-align: center;
+}
+
+.lightbox img {
+  max-height: 80vh;
+  width: auto;
+  margin: auto;
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,0.5);
+}
+
+.lightbox p {
+  margin-top: 20px;
+
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   REVEAL ANIMATIONS
+============================================================ */
+
+.reveal {
+  opacity: 0;
+
+  transform:
+    translateY(40px);
+
+  transition:
+    opacity 1s var(--ease),
+    transform 1s var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 800px) {
+
+  .section {
+    width: min(100% - 30px, 650px);
+
+    padding: 90px 0;
+  }
+
+  .navigation {
+    padding: 18px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-button {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 42px;
+    height: 42px;
+
+    background: transparent;
+
+    cursor: pointer;
+  }
+
+  .menu-button span {
+    display: block;
+
+    width: 25px;
+    height: 1px;
+
+    background: white;
+
+    transition:
+      transform 0.4s,
+      opacity 0.4s;
+  }
+
+  .mobile-menu {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 70;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 30px;
+
+    background:
+      rgba(18,12,14,0.97);
+
+    transform:
+      translateY(-100%);
+
+    transition:
+      transform 0.8s var(--ease);
+  }
+
+  .mobile-menu.open {
+    transform:
+      translateY(0);
+  }
+
+  .mobile-menu a {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 3rem;
+  }
+
+  .hero {
+    min-height: 100svh;
+
+    padding:
+      100px
+      25px
+      50px;
+  }
+
+  .hero-content {
+    align-self: end;
+  }
+
+  .hero-title {
+    font-size: clamp(4rem, 18vw, 7rem);
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  .story-intro {
+    min-height: auto;
+
+    display: block;
+  }
+
+  .section-number {
+    margin-bottom: 40px;
+  }
+
+  .chapters {
+    display: block;
+
+    padding:
+      60px
+      15px;
+  }
+
+  .chapter-card {
+    min-height: 500px;
+  }
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-item {
+    display: block;
+
+    padding-left: 35px;
+  }
+
+  .timeline-dot {
+    left: 8px;
+  }
+
+  .timeline-date {
+    margin-bottom: 15px;
+  }
+
+  .timeline-content {
+    padding-left: 0;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-card {
+    min-height: 270px;
+  }
+
+  .gallery {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+  }
+
+  .gallery-item,
+  .gallery-large {
+    grid-column: auto;
+    grid-row: auto;
+
+    min-height: 230px;
+  }
+
+  .gallery-large {
+    grid-column: span 2;
+
+    min-height: 420px;
+  }
+
+  .gallery-caption {
+    opacity: 1;
+
+    transform: none;
+
+    font-size: 1rem;
+  }
+
+  .envelope {
+    grid-template-columns: 35px 1fr;
+  }
+
+  .envelope-open {
+    display: none;
+  }
+
+  .numbers-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rain-section {
+    padding:
+      50px
+      15px;
+  }
+
+  .rain-window {
+    min-height: 65vh;
+  }
+
+  .final-section {
+    padding:
+      120px
+      20px;
+  }
+
+  .final-title {
+    margin-bottom: 50px;
+  }
+
+  .music-label {
+    display: none;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+  .rain {
+    display: none;
+  }
+
+}
+/* ============================================================
+   SECRET ROOM — CINEMATIC UPGRADE
+============================================================ */
+
+.secret-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(100, 31, 50, 0.22),
+      transparent 55%
+    );
+}
+
+/* Soft moving romantic glow */
+.secret-section::before {
+  content: "";
+
+  position: absolute;
+  inset: -30%;
+
+  background:
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(209, 138, 159, 0.10),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(216, 184, 138, 0.08),
+      transparent 25%
+    );
+
+  filter: blur(50px);
+
+  animation: secretGlow 8s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+@keyframes secretGlow {
+  from {
+    transform: scale(0.95) rotate(0deg);
+  }
+
+  to {
+    transform: scale(1.08) rotate(3deg);
+  }
+}
+
+
+/* Cinematic secret card */
+
+.secret-box {
+  position: relative;
+  z-index: 3;
+
+  width: min(700px, 100%);
+
+  padding:
+    clamp(45px, 8vw, 100px)
+    clamp(25px, 7vw, 80px);
+
+  border: 1px solid rgba(216,184,138,0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.055),
+      rgba(255,255,255,0.015)
+    );
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 40px 120px rgba(0,0,0,0.45),
+    inset 0 0 80px rgba(100,31,50,0.12);
+
+  overflow: hidden;
+
+  transition:
+    transform 1s var(--ease),
+    border-color 0.8s;
+}
+
+.secret-box:hover {
+  transform: translateY(-8px);
+
+  border-color:
+    rgba(216,184,138,0.35);
+}
+
+
+/* Tiny golden light travelling around box */
+
+.secret-box::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 60%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--champagne),
+      transparent
+    );
+
+  animation: secretLight 5s linear infinite;
+}
+
+@keyframes secretLight {
+  from {
+    left: -70%;
+  }
+
+  to {
+    left: 120%;
+  }
+}
+
+
+/* SECRET heading */
+
+.secret-box h2 {
+  position: relative;
+
+  margin: 20px 0 25px;
+
+  font-size: clamp(4rem, 13vw, 9rem);
+
+  line-height: 0.75;
+
+  letter-spacing: -0.05em;
+
+  background:
+    linear-gradient(
+      120deg,
+      var(--cream),
+      var(--rose),
+      var(--champagne),
+      var(--cream)
+    );
+
+  background-size: 250% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation: secretText 7s linear infinite;
+}
+
+@keyframes secretText {
+  to {
+    background-position: 250% center;
+  }
+}
+
+
+/* ============================================================
+   SECRET MESSAGE
+============================================================ */
+
+.secret-message {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(100,31,50,0.35),
+      transparent 55%
+    ),
+    #120c0e;
+}
+
+
+/* Rain behind secret message */
+
+.secret-message::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.35;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.025) 50%,
+      transparent 100%
+    );
+
+  animation: secretRainGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes secretRainGlow {
+  from {
+    transform: translateX(-5%);
+  }
+
+  to {
+    transform: translateX(5%);
+  }
+}
+
+
+.secret-message-inner {
+  position: relative;
+  z-index: 5;
+
+  width: min(760px, 100%);
+
+  padding: 40px 20px;
+
+  text-align: center;
+}
+
+
+/* "YOU FOUND MY SECRET" */
+
+.secret-message .eyebrow {
+  animation:
+    secretEyebrow 1.5s var(--ease) both;
+}
+
+@keyframes secretEyebrow {
+  from {
+    opacity: 0;
+    letter-spacing: 0.5em;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 0.25em;
+    transform: translateY(0);
+  }
+}
+
+
+/* Main heading */
+
+.secret-message h2 {
+  margin: 30px 0;
+
+  font-size: clamp(3.5rem, 10vw, 7rem);
+
+  line-height: 0.9;
+
+  color: var(--cream);
+
+  text-shadow:
+    0 0 40px rgba(209,138,159,0.15);
+
+  animation: secretHeadingIn 1.8s var(--ease) both;
+}
+
+@keyframes secretHeadingIn {
+  from {
+    opacity: 0;
+    transform:
+      translateY(35px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* Letter/message */
+
+.secret-letter {
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  color: rgba(245,238,233,0.72);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+
+  line-height: 1.8;
+}
+
+
+/* Emotional lines */
+
+.emotional-line,
+.love-line,
+.promise-line,
+.final-love-line {
+  opacity: 0;
+  transform: translateY(20px);
+
+  transition:
+    opacity 1.2s var(--ease),
+    transform 1.2s var(--ease);
+}
+
+.secret-message.visible
+.emotional-line,
+.secret-message.visible
+.love-line,
+.secret-message.visible
+.promise-line,
+.secret-message.visible
+.final-love-line {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.emotional-line {
+  transition-delay: 0.8s;
+}
+
+.love-line {
+  transition-delay: 1.4s;
+}
+
+.promise-line {
+  transition-delay: 2s;
+}
+
+.final-love-line {
+  transition-delay: 2.6s;
+}
+
+
+/* Secret signature */
+
+.secret-signature {
+  margin-top: 50px;
+
+  color: var(--rose);
+
+  font-family: "Parisienne", cursive;
+
+  font-size: clamp(3rem, 8vw, 5rem);
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 1.5s var(--ease),
+    transform 1.5s var(--ease);
+}
+
+.secret-message.visible .secret-signature {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  transition-delay: 3.2s;
+}
+
+
+/* ============================================================
+   FLOATING HEARTS
+============================================================ */
+
+.floating-heart {
+  position: fixed;
+
+  z-index: 2;
+
+  bottom: -30px;
+
+  pointer-events: none;
+
+  color: var(--rose);
+
+  font-size: 14px;
+
+  opacity: 0;
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(209,138,159,0.45)
+    );
+
+  animation:
+    heartFloat
+    var(--heart-duration, 5s)
+    var(--ease)
+    forwards;
+}
+
+@keyframes heartFloat {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0, 0, 0)
+      scale(0.5)
+      rotate(0deg);
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  70% {
+    opacity: 0.55;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(
+        var(--heart-x, 0px),
+        -110vh,
+        0
+      )
+      scale(1.3)
+      rotate(25deg);
+  }
+}
+
+
+/* ============================================================
+   SECRET RAIN DROPS
+============================================================ */
+
+.secret-drop {
+  position: fixed;
+
+  top: -80px;
+
+  z-index: 1;
+
+  width: 1px;
+
+  height: var(--drop-height, 60px);
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(255,255,255,0.3)
+    );
+
+  opacity: var(--drop-opacity, 0.25);
+
+  animation:
+    secretRainFall
+    var(--drop-speed, 1.5s)
+    linear
+    forwards;
+}
+
+@keyframes secretRainFall {
+  from {
+    transform:
+      translate3d(0, -100px, 0);
+  }
+
+  to {
+    transform:
+      translate3d(-100px, 115vh, 0);
+  }
+}
+
+
+/* ============================================================
+   MOBILE SECRET ROOM
+============================================================ */
+
+@media (max-width: 800px) {
+
+  .secret-section {
+    min-height: 90svh;
+  }
+
+  .secret-box {
+    padding:
+      55px
+      22px;
+  }
+
+  .secret-box h2 {
+    font-size: clamp(4rem, 22vw, 7rem);
+  }
+
+  .secret-message-inner {
+    padding:
+      60px
+      18px;
+  }
+
+  .secret-message h2 {
+    font-size: clamp(3.2rem, 17vw, 6rem);
+  }
+
+  .secret-letter {
+    font-size: 1.2rem;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .floating-heart,
+  .secret-drop {
+    display: none;
+  }
+
+  .secret-box::before,
+  .secret-box h2,
+  .secret-section::before {
+    animation: none;
+  }
+
+       }
+/* ============================================================
+   CINEMATIC SECRET EXPERIENCE
+============================================================ */
+
+.secret-section.secret-unlocked {
+  display: none !important;
+}
+
+/* Full cinematic secret room */
+.secret-message {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  max-width: none;
+
+  display: none;
+  place-items: center;
+
+  overflow: hidden;
+
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(111, 37, 53, 0.38),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(209, 138, 159, 0.08),
+      transparent 30%
+    ),
+    #0c0709;
+}
+
+.secret-message.visible {
+  display: grid;
+
+  animation: cinematicSecretIn 2s var(--ease) both;
+}
+
+@keyframes cinematicSecretIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* Dark cinematic vignette */
+
+.secret-message::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(0,0,0,0.75) 100%
+    );
+
+  z-index: 2;
+}
+
+
+/* Moving light */
+
+.secret-cinematic-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(209,138,159,0.12),
+      transparent 65%
+    );
+
+  filter: blur(30px);
+
+  animation:
+    cinematicGlow 8s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+@keyframes cinematicGlow {
+  0% {
+    transform: translate(-30vw, -10vh) scale(0.8);
+  }
+
+  50% {
+    transform: translate(20vw, 10vh) scale(1.2);
+  }
+
+  100% {
+    transform: translate(-5vw, 25vh) scale(0.9);
+  }
+}
+
+
+/* Secret content */
+
+.secret-message-inner {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(760px, 100%);
+
+  text-align: center;
+
+  padding: 30px 15px;
+}
+
+
+/* Top label */
+
+.secret-message .eyebrow {
+  display: block;
+
+  margin-bottom: 25px;
+
+  opacity: 0;
+
+  animation:
+    secretFadeUp 1.5s 0.5s var(--ease)
+    forwards;
+}
+
+
+/* Main title */
+
+.secret-message h2 {
+  margin: 20px 0 35px;
+
+  font-size: clamp(4rem, 11vw, 8rem);
+
+  line-height: 0.82;
+
+  letter-spacing: -0.045em;
+
+  color: var(--cream);
+
+  text-shadow:
+    0 0 30px rgba(209,138,159,0.12),
+    0 20px 70px rgba(0,0,0,0.5);
+
+  opacity: 0;
+
+  animation:
+    secretTitleIn 1.8s 0.8s var(--ease)
+    forwards;
+}
+
+@keyframes secretTitleIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(50px)
+      scale(0.94);
+
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+
+/* Thin golden divider */
+
+.secret-divider {
+  width: 0;
+  height: 1px;
+
+  margin: 0 auto 35px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--champagne),
+      transparent
+    );
+
+  animation:
+    dividerReveal 1.5s 1.6s var(--ease)
+    forwards;
+}
+
+@keyframes dividerReveal {
+  to {
+    width: min(280px, 60%);
+  }
+}
+
+
+/* Letter */
+
+.secret-letter {
+  max-width: 650px;
+
+  margin: auto;
+
+  color:
+    rgba(245,238,233,0.72);
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size:
+    clamp(1.2rem, 3vw, 1.6rem);
+
+  line-height: 1.8;
+}
+
+
+/* Individual emotional lines */
+
+.secret-letter p {
+  margin-bottom: 25px;
+
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  animation:
+    secretParagraphIn 1.3s var(--ease)
+    forwards;
+}
+
+.secret-letter p:nth-child(1) {
+  animation-delay: 2s;
+}
+
+.secret-letter p:nth-child(2) {
+  animation-delay: 2.7s;
+}
+
+.secret-letter p:nth-child(3) {
+  animation-delay: 3.4s;
+}
+
+@keyframes secretParagraphIn {
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* Signature */
+
+.secret-signature {
+  margin-top: 55px;
+
+  color: var(--rose);
+
+  font-family: "Parisienne", cursive;
+
+  font-size:
+    clamp(3.5rem, 9vw, 6rem);
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  animation:
+    signatureReveal 1.8s 4.2s var(--ease)
+    forwards;
+}
+
+@keyframes signatureReveal {
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================================================
+   SECRET RAIN
+============================================================ */
+
+.secret-rain-layer {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  opacity: 0.45;
+}
+
+.secret-drop {
+  position: absolute;
+
+  top: -100px;
+
+  width: 1px;
+
+  height: var(--drop-height);
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(255,255,255,0.45)
+    );
+
+  opacity: var(--drop-opacity);
+
+  transform: rotate(15deg);
+
+  animation:
+    cinematicRain
+    var(--drop-speed)
+    linear
+    infinite;
+
+  animation-delay: var(--drop-delay);
+}
+
+@keyframes cinematicRain {
+  from {
+    transform:
+      translate3d(0,-100px,0)
+      rotate(15deg);
+  }
+
+  to {
+    transform:
+      translate3d(-140px,115vh,0)
+      rotate(15deg);
+  }
+}
+
+
+/* ============================================================
+   FLOATING HEARTS
+============================================================ */
+
+.secret-heart {
+  position: absolute;
+
+  bottom: -50px;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  color: var(--rose);
+
+  font-size: var(--heart-size);
+
+  opacity: 0;
+
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(209,138,159,0.6)
+    );
+
+  animation:
+    cinematicHeart
+    var(--heart-duration)
+    var(--ease)
+    infinite;
+
+  animation-delay: var(--heart-delay);
+}
+
+@keyframes cinematicHeart {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate3d(0,0,0)
+      scale(0.4)
+      rotate(0deg);
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        var(--heart-x),
+        -115vh,
+        0
+      )
+      scale(1.3)
+      rotate(25deg);
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 800px) {
+
+  .secret-message {
+    min-height: 100svh;
+
+    padding:
+      50px 18px;
+  }
+
+  .secret-message h2 {
+    font-size:
+      clamp(3.4rem, 18vw, 6rem);
+  }
+
+  .secret-letter {
+    font-size: 1.18rem;
+
+    line-height: 1.75;
+  }
+
+  .secret-signature {
+    margin-top: 40px;
+  }
+
+     }
