@@ -1,1 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="A private collection of memories, photographs and moments."
+  >
+
+  <title>Our Memory Museum</title>
+
+
+  <!-- =====================================================
+       GOOGLE FONTS
+  ====================================================== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Parisienne&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       CSS
+  ====================================================== -->
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       PRELOADER
+  ====================================================== -->
+
+  <div
+    class="preloader"
+    id="preloader"
+  >
+
+    <div class="preloader-inner">
+
+      <span class="preloader-small">
+        A private collection of
+      </span>
+
+      <h1>
+        Memories
+      </h1>
+
+      <div class="loader-line">
+        <span></span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       AMBIENT BACKGROUND
+  ====================================================== -->
+
+  <div
+    class="ambient-background"
+    aria-hidden="true"
+  >
+
+    <div class="window-glow"></div>
+
+    <div class="city-lights"></div>
+
+    <div class="grain"></div>
+
+    <div
+      class="rain"
+      id="rain"
+    ></div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       MUSIC
+  ====================================================== -->
+
+  <button
+    class="music-button"
+    id="musicButton"
+    aria-label="Play or pause music"
+    type="button"
+  >
+
+    <span class="music-icon">
+      ♪
+    </span>
+
+    <span class="music-label">
+      Our Song
+    </span>
+
+  </button>
+
+
+  <audio
+    id="backgroundMusic"
+    loop
+    preload="none"
+  >
+
+    <source
+      src="assets/music/our-song.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+
+
+  <!-- =====================================================
+       OPENING SCREEN
+  ====================================================== -->
+
+  <section
+    class="opening"
+    id="opening"
+  >
+
+    <div class="opening-content">
+
+      <span class="eyebrow">
+        A PRIVATE MEMORY MUSEUM
+      </span>
+
+      <h1>
+
+        Hey,
+
+        <span>
+          Gauri.
+        </span>
+
+      </h1>
+
+      <p>
+        I made something to keep a few memories
+        in one place.
+      </p>
+
+
+      <button
+        class="primary-button"
+        id="openStory"
+        type="button"
+      >
+
+        <span>
+          Open Our Story
+        </span>
+
+        <span class="button-arrow">
+          →
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div class="opening-bottom">
+
+      <span>
+        SCROLL TO EXPLORE
+      </span>
+
+      <span class="scroll-line"></span>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       MAIN WEBSITE
+  ====================================================== -->
+
+  <main
+    id="mainContent"
+    class="site hidden"
+  >
+
+
+    <!-- ===================================================
+         NAVIGATION
+    ==================================================== -->
+
+    <nav class="navigation">
+
+      <a
+        href="#home"
+        class="nav-logo"
+      >
+        H × G
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="#story">
+          Story
+        </a>
+
+        <a href="#timeline">
+          Timeline
+        </a>
+
+        <a href="#gallery">
+          Memories
+        </a>
+
+        <a href="#letters">
+          Letters
+        </a>
+
+      </div>
+
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation"
+        type="button"
+      >
+
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </nav>
+
+
+
+    <!-- ===================================================
+         MOBILE MENU
+    ==================================================== -->
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+    >
+
+      <a href="#story">
+        Story
+      </a>
+
+      <a href="#timeline">
+        Timeline
+      </a>
+
+      <a href="#gallery">
+        Memories
+      </a>
+
+      <a href="#letters">
+        Letters
+      </a>
+
+      <a href="#secret">
+        Secret
+      </a>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
+
+    <section
+      class="hero section"
+      id="home"
+    >
+
+      <div class="hero-image-wrapper reveal">
+
+        <img
+          src="assets/photos/photo-01.jpg"
+          alt="A memory"
+          class="hero-image"
+        >
+
+        <div class="image-overlay"></div>
+
+      </div>
+
+
+      <div class="hero-content">
+
+        <span class="eyebrow reveal">
+          HARSHIT × GAURI
+        </span>
+
+
+        <h1 class="hero-title reveal">
+
+          Two people.<br>
+
+          Many memories.<br>
+
+          <em>
+            One story.
+          </em>
+
+        </h1>
+
+
+        <p class="hero-description reveal">
+
+          A collection of ordinary days that slowly became
+          some of the most meaningful memories.
+
+        </p>
+
+      </div>
+
+
+      <div class="hero-scroll">
+
+        <span>
+          01 / 08
+        </span>
+
+        <span class="line"></span>
+
+        <span>
+          SCROLL
+        </span>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         STORY
+    ==================================================== -->
+
+    <section
+      class="story-intro section"
+      id="story"
+    >
+
+      <div class="section-number">
+        01
+      </div>
+
+
+      <div class="story-intro-content">
+
+        <span class="eyebrow reveal">
+          HOW IT STARTED
+        </span>
+
+
+        <h2 class="section-title reveal">
+          It started simply.
+        </h2>
+
+
+        <p class="large-text reveal">
+
+          In 9th standard, Harshit and Gauri first met
+          at Astitva. At first, they were simply people
+          who talked when necessary.
+
+        </p>
+
+
+        <p class="body-text reveal">
+
+          Somewhere along the way, those ordinary
+          conversations became regular conversations.
+          During the rainy season, they would sit together
+          and talk for hours.
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         CHAPTERS
+    ==================================================== -->
+
+    <section class="chapters section">
+
+
+      <div class="chapter-card reveal">
+
+        <span class="chapter-number">
+          CHAPTER 01
+        </span>
+
+        <h2>
+          The Café
+        </h2>
+
+        <span class="chapter-date">
+          March / April 2024
+        </span>
+
+        <p>
+
+          A café near Astitva. Cold coffee.
+          One to two hours of conversation.
+          And two people who were still simply friends.
+
+        </p>
+
+        <div class="chapter-detail">
+
+          She was comfortable enough to share
+          her problems and thoughts.
+
+        </div>
+
+      </div>
+
+
+
+      <div
+        class="chapter-card chapter-dark reveal"
+      >
+
+        <span class="chapter-number">
+          CHAPTER 02
+        </span>
+
+        <h2>
+          The Rain
+        </h2>
+
+        <span class="chapter-date">
+          An unforgettable memory
+        </span>
+
+        <p>
+
+          Rain outside. Conversations inside.
+          A friendship becoming something deeper,
+          one ordinary moment at a time.
+
+        </p>
+
+        <div class="chapter-detail">
+
+          Sometimes the smallest memories
+          become the ones we remember longest.
+
+        </div>
+
+      </div>
+
+
+
+      <div class="chapter-card reveal">
+
+        <span class="chapter-number">
+          CHAPTER 03
+        </span>
+
+        <h2>
+          July 2025
+        </h2>
+
+        <span class="chapter-date">
+          25 → 26 July 2025
+        </span>
+
+        <p>
+
+          A late-night conversation.
+          Nervous words.
+          A confession that changed the meaning
+          of the friendship.
+
+        </p>
+
+        <div class="chapter-detail">
+
+          The relationship officially began
+          on 26 July 2025.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         TIMELINE
+    ==================================================== -->
+
+    <section
+      class="timeline-section section"
+      id="timeline"
+    >
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          THE TIMELINE
+        </span>
+
+        <h2 class="section-title">
+          Moments that mattered.
+        </h2>
+
+      </div>
+
+
+      <div class="timeline">
+
+
+        <article class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">
+            2024
+          </div>
+
+          <div class="timeline-content">
+
+            <span>
+              THE BEGINNING
+            </span>
+
+            <h3>
+              Astitva
+            </h3>
+
+            <p>
+
+              Two people in 9th standard,
+              initially talking only when necessary.
+
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">
+            2024
+          </div>
+
+          <div class="timeline-content">
+
+            <span>
+              FRIENDSHIP
+            </span>
+
+            <h3>
+              Conversations became longer.
+            </h3>
+
+            <p>
+
+              Regular conversations, rainy days,
+              shared problems and hours of talking.
+
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">
+            MAR / APR 2024
+          </div>
+
+          <div class="timeline-content">
+
+            <span>
+              THE CAFÉ
+            </span>
+
+            <h3>
+              Cold Coffee & Conversations
+            </h3>
+
+            <p>
+
+              A café near Astitva.
+              Dark-blue outfits by coincidence.
+              And a long conversation.
+
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">
+            25 JULY
+          </div>
+
+          <div class="timeline-content">
+
+            <span>
+              THE CONFESSION
+            </span>
+
+            <h3>
+              A late-night conversation
+            </h3>
+
+            <p>
+
+              Around 11:00–11:15 PM,
+              a nervous confession changed everything.
+
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">
+            26 JULY 2025
+          </div>
+
+          <div class="timeline-content">
+
+            <span>
+              A NEW CHAPTER
+            </span>
+
+            <h3>
+              Officially Together
+            </h3>
+
+            <p>
+              The day the friendship became a relationship.
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">
+            SINCE THEN
+          </div>
+
+          <div class="timeline-content">
+
+            <span>
+              THE JOURNEY
+            </span>
+
+            <h3>
+              Good days. Difficult days. Real days.
+            </h3>
+
+            <p>
+
+              Memories, disagreements, apologies,
+              laughter and countless conversations.
+
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         RAIN MEMORY
+    ==================================================== -->
+
+    <section class="rain-section section">
+
+      <div class="rain-window">
+
+        <div class="window-reflection"></div>
+
+
+        <div class="rain-quote reveal">
+
+          <span class="eyebrow">
+            SOME MEMORIES DON'T NEED WORDS
+          </span>
+
+          <h2>
+
+            Some days<br>
+            simply stay with us.
+
+          </h2>
+
+          <p>
+
+            Rain falling outside.
+            Conversations continuing inside.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         LITTLE MEMORIES
+    ==================================================== -->
+
+    <section class="memories-section section">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          THE LITTLE THINGS
+        </span>
+
+        <h2 class="section-title">
+          Memories aren't always grand.
+        </h2>
+
+      </div>
+
+
+      <div class="memory-grid">
+
+
+        <article class="memory-card reveal">
+
+          <span class="memory-icon">
+            01
+          </span>
+
+          <h3>
+            The Dark Blue Coincidence
+          </h3>
+
+          <p>
+
+            A dark-blue shirt.
+            A dark-blue kurti.
+            Completely accidental.
+
+          </p>
+
+        </article>
+
+
+
+        <article class="memory-card reveal">
+
+          <span class="memory-icon">
+            02
+          </span>
+
+          <h3>
+            The First Hug
+          </h3>
+
+          <p>
+
+            A moment when emotions became
+            difficult to put into words.
+
+          </p>
+
+        </article>
+
+
+
+        <article class="memory-card reveal">
+
+          <span class="memory-icon">
+            03
+          </span>
+
+          <h3>
+            The Umbrella
+          </h3>
+
+          <p>
+
+            Heavy rain.
+            One umbrella.
+            A memorable walk home.
+
+          </p>
+
+        </article>
+
+
+
+        <article class="memory-card reveal">
+
+          <span class="memory-icon">
+            04
+          </span>
+
+          <h3>
+            Late-Night Conversations
+          </h3>
+
+          <p>
+
+            Hours of conversations
+            stretching deep into the night.
+
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         GALLERY
+    ==================================================== -->
+
+    <section
+      class="gallery-section section"
+      id="gallery"
+    >
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          THE ARCHIVE
+        </span>
+
+        <h2 class="section-title">
+          Photographs.
+        </h2>
+
+        <p>
+          Replace the sample images with your own photographs.
+        </p>
+
+      </div>
+
+
+      <div class="gallery">
+
+
+        <button
+          class="gallery-item gallery-large reveal"
+          data-image="assets/photos/photo-01.jpg"
+          data-caption="A favourite memory."
+          type="button"
+        >
+
+          <img
+            src="assets/photos/photo-01.jpg"
+            alt="Memory 01"
+            loading="lazy"
+          >
+
+          <span class="gallery-caption">
+            Memory 01
+          </span>
+
+        </button>
+
+
+
+        <button
+          class="gallery-item reveal"
+          data-image="assets/photos/photo-02.jpg"
+          data-caption="Another chapter."
+          type="button"
+        >
+
+          <img
+            src="assets/photos/photo-02.jpg"
+            alt="Memory 02"
+            loading="lazy"
+          >
+
+          <span class="gallery-caption">
+            Memory 02
+          </span>
+
+        </button>
+
+
+
+        <button
+          class="gallery-item reveal"
+          data-image="assets/photos/photo-03.jpg"
+          data-caption="One more memory."
+          type="button"
+        >
+
+          <img
+            src="assets/photos/photo-03.jpg"
+            alt="Memory 03"
+            loading="lazy"
+          >
+
+          <span class="gallery-caption">
+            Memory 03
+          </span>
+
+        </button>
+
+
+
+        <button
+          class="gallery-item reveal"
+          data-image="assets/photos/photo-04.jpg"
+          data-caption="A day worth remembering."
+          type="button"
+        >
+
+          <img
+            src="assets/photos/photo-04.jpg"
+            alt="Memory 04"
+            loading="lazy"
+          >
+
+          <span class="gallery-caption">
+            Memory 04
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         LETTERS
+    ==================================================== -->
+
+    <section
+      class="letters-section section"
+      id="letters"
+    >
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          PRIVATE WORDS
+        </span>
+
+        <h2 class="section-title">
+          Messages never properly said.
+        </h2>
+
+      </div>
+
+
+      <div class="envelopes">
+
+
+        <button
+          class="envelope reveal"
+          data-letter="letter1"
+          type="button"
+        >
+
+          <span class="envelope-number">
+            01
+          </span>
+
+          <span class="envelope-title">
+            Things I never properly said
+          </span>
+
+          <span class="envelope-open">
+            OPEN →
+          </span>
+
+        </button>
+
+
+
+        <button
+          class="envelope reveal"
+          data-letter="letter2"
+          type="button"
+        >
+
+          <span class="envelope-number">
+            02
+          </span>
+
+          <span class="envelope-title">
+            What I'm grateful for
+          </span>
+
+          <span class="envelope-open">
+            OPEN →
+          </span>
+
+        </button>
+
+
+
+        <button
+          class="envelope reveal"
+          data-letter="letter3"
+          type="button"
+        >
+
+          <span class="envelope-number">
+            03
+          </span>
+
+          <span class="envelope-title">
+            Things I regret
+          </span>
+
+          <span class="envelope-open">
+            OPEN →
+          </span>
+
+        </button>
+
+
+
+        <button
+          class="envelope reveal"
+          data-letter="letter4"
+          type="button"
+        >
+
+          <span class="envelope-number">
+            04
+          </span>
+
+          <span class="envelope-title">
+            What you mean to me
+          </span>
+
+          <span class="envelope-open">
+            OPEN →
+          </span>
+
+        </button>
+
+
+
+        <button
+          class="envelope reveal"
+          data-letter="letter6"
+          type="button"
+        >
+
+          <span class="envelope-number">
+            05
+          </span>
+
+          <span class="envelope-title">
+            Promises
+          </span>
+
+          <span class="envelope-open">
+            OPEN →
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         LETTER MODAL
+    ==================================================== -->
+
+    <div
+      class="letter-modal"
+      id="letterModal"
+    >
+
+      <button
+        class="modal-close"
+        id="closeLetter"
+        aria-label="Close letter"
+        type="button"
+      >
+        ×
+      </button>
+
+
+      <div class="letter-paper">
+
+        <span class="letter-label">
+          A PRIVATE MESSAGE
+        </span>
+
+        <div id="letterContent"></div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         NUMBERS
+    ==================================================== -->
+
+    <section class="numbers-section section">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          THE NUMBERS
+        </span>
+
+        <h2 class="section-title">
+          Some things can be counted.
+        </h2>
+
+      </div>
+
+
+      <div class="numbers-grid">
+
+
+        <div class="number-card reveal">
+
+          <strong
+            class="counter"
+            data-target="0"
+          >
+            0
+          </strong>
+
+          <span>
+            DAYS TOGETHER
+          </span>
+
+          <small>
+            Automatically calculated
+          </small>
+
+        </div>
+
+
+
+        <div class="number-card reveal">
+
+          <strong>
+            2024
+          </strong>
+
+          <span>
+            FRIENDSHIP BEGAN
+          </span>
+
+        </div>
+
+
+
+        <div class="number-card reveal">
+
+          <strong>
+            26
+          </strong>
+
+          <span>
+            JULY 2025
+          </span>
+
+        </div>
+
+
+
+        <div class="number-card reveal">
+
+          <strong>
+            ∞
+          </strong>
+
+          <span>
+            MEMORIES
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SECRET ROOM
+    ==================================================== -->
+
+    <section
+      class="secret-section section"
+      id="secret"
+    >
+
+      <div class="secret-box reveal">
+
+        <span class="eyebrow">
+          PRIVATE ROOM
+        </span>
+
+        <h2>
+          SECRET
+        </h2>
+
+        <p>
+          Some words belong behind one more door.
+        </p>
+
+
+        <button
+          class="primary-button"
+          id="unlockButton"
+          type="button"
+        >
+
+          <span>
+            Unlock
+          </span>
+
+          <span class="button-arrow">
+            →
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         PASSWORD MODAL
+    ==================================================== -->
+
+    <div
+      class="password-modal"
+      id="passwordModal"
+    >
+
+      <div class="password-box">
+
+        <button
+          class="modal-close"
+          id="closePassword"
+          aria-label="Close password window"
+          type="button"
+        >
+          ×
+        </button>
+
+
+        <span class="eyebrow">
+          PRIVATE
+        </span>
+
+
+        <h2>
+          Enter the code
+        </h2>
+
+
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Password"
+          autocomplete="off"
+        >
+
+
+        <button
+          class="primary-button"
+          id="submitPassword"
+          type="button"
+        >
+
+          <span>
+            Unlock
+          </span>
+
+          <span class="button-arrow">
+            →
+          </span>
+
+        </button>
+
+
+        <p
+          class="password-error"
+          id="passwordError"
+        ></p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         SECRET MESSAGE
+         
+         IMPORTANT:
+         This section MUST remain hidden in CSS.
+         
+         JS will add .visible after correct password.
+    ==================================================== -->
+
+    <section
+      class="secret-message section"
+      id="secretMessage"
+    >
+
+      <!-- Rain layer specifically for secret room -->
+
+      <div
+        class="secret-rain"
+        aria-hidden="true"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+
+      <!-- Floating hearts -->
+
+      <div
+        class="secret-hearts"
+        aria-hidden="true"
+      >
+
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+
+      </div>
+
+
+      <div class="secret-message-inner">
+
+
+        <!-- Heart orbit -->
+
+        <div
+          class="secret-heart-orbit"
+          aria-hidden="true"
+        >
+
+          <span>♡</span>
+          <span>♥</span>
+          <span>♡</span>
+          <span>♥</span>
+
+        </div>
+
+
+        <span class="eyebrow">
+          YOU FOUND MY SECRET
+        </span>
+
+
+        <h2>
+
+          Gayuu,<br>
+          this one is for you.
+
+        </h2>
+
+
+        <div class="secret-divider">
+
+          <span></span>
+
+          <i>
+            ♥
+          </i>
+
+          <span></span>
+
+        </div>
+
+
+
+        <!-- ===============================================
+             MAIN SECRET LETTER
+        ================================================ -->
+
+        <div
+          class="secret-letter"
+          id="secretLetter"
+        >
+
+
+          <p>
+
+            Gayuu, you know?
+
+            <br>
+
+            Ki Tu mere liye kitni important hai? ❤️
+
+          </p>
+
+
+          <p>
+
+            You know How much precious are you for me?
+
+            <br>
+
+            Shayad tu kabhi soch bhi nhi sakti
+            ki tu mere liye kya hai.
+
+          </p>
+
+
+          <p>
+
+            Or shayad mai bhi kabhi bata nhi paunga
+            because mujhe feelings express karne
+            nhi aata acche se,
+
+            <br>
+
+            but fir bhi I'll try my best....
+
+          </p>
+
+
+          <p>
+
+            I know babe,
+            sometimes I hurt you so much 😭
+
+          </p>
+
+
+          <p>
+
+            Kabhi kabhi shayad mai tujhe theek se
+            samajh bhi nhi pata,
+
+            <br>
+
+            tujh pe bin matlab ka gussa karta hu...
+
+            <br>
+
+            Or mere is behaviour se tujhe
+            bohot hurt bhi hota hai...
+
+            <br>
+
+            Har time tujhe rulata hu... ❤️‍🩹😭
+
+          </p>
+
+
+          <p>
+
+            But yrr honestly
+            I can't live without you yrr...
+
+          </p>
+
+
+          <p>
+
+            Bhale hi mai gusse me kuch bhi kyu na bolu,
+
+            <br>
+
+            bhale hi mai kitna hi bura bol du lekin....
+
+            <br><br>
+
+            Sach to ye hai ki mai tujh se baat kiye bina
+            reh hi nhi sktaaa...
+
+          </p>
+
+
+          <p>
+
+            And I know ki ye month was very hurtful
+            for bohot of us. ❤️‍🩹
+
+          </p>
+
+
+          <p>
+
+            Maine tujhe iss August month me
+            bohot rulaya hai....
+
+            <br>
+
+            Shayad isse pehle maine kabhi tujhe
+            itna hurt na kiya ho....
+
+          </p>
+
+
+          <p>
+
+            But mujhe tujh se jyada bura laga yrr.
+
+          </p>
+
+
+          <p>
+
+            I know ki tu galat nhi thi
+            or na tune mujh pe cheat kiya,
+
+            <br>
+
+            but all of this happens only because
+            of my insecurity and my overthinking issue...
+
+          </p>
+
+
+          <p>
+
+            Or har baar ki tarah mere parents ka gussa
+            tujh pe nikal diya.
+
+          </p>
+
+
+          <p class="emotional-line">
+
+            I am soo srryyyy forrr that
+            mera bacchaaa 😭❤️‍🩹
+
+          </p>
+
+
+          <p>
+
+            And I know you lovee me
+            by crossing every limits. ❤️‍🩹
+
+          </p>
+
+
+          <p class="love-line">
+
+            And Gayuu....
+
+            <br><br>
+
+            I loveee youu so much. ❤️
+
+            <br>
+
+            I lovee you yesterday,
+
+            <br>
+
+            I love you today,
+
+            <br>
+
+            and I love you tomorrow.
+
+            <br><br>
+
+            I lovee you forever ever and ever babe.
+
+            💋🧿🌎♾️
+
+          </p>
+
+
+          <p class="promise-line">
+
+            Or haa...
+
+            <br>
+
+            bhale hi hamare bich kitna bhi
+            jhagda ho jaye,
+
+            life me kitne bhi ups & downs aaye,
+
+            <br><br>
+
+            but ham ek dusre pe kabhi
+            give up nhi karenge.
+
+            <br>
+
+            I promise you jaan.
+            ♾️🥺🧿😭
+
+          </p>
+
+
+          <p class="final-love-line">
+
+            I am always with you
+            in any situation... ♾️
+
+          </p>
+
+
+          <div class="secret-signature">
+
+            Yours,
+
+            <br>
+
+            Harshit ❤️
+
+          </div>
+
+
+          <!-- =============================================
+               TYPING MESSAGE
+               
+               JS specifically looks for:
+               #typingText
+          ============================================== -->
+
+          <div class="secret-typing">
+
+            <span class="typing-label">
+              ONE LAST THING...
+            </span>
+
+            <p
+              id="typingText"
+              class="typing-text"
+            ></p>
+
+          </div>
+
+
+          <!-- =============================================
+               SECRET ENDING
+               
+               JS specifically looks for:
+               #secretEnding
+          ============================================== -->
+
+          <div
+            id="secretEnding"
+            class="secret-ending"
+          >
+
+            <div class="ending-heart">
+              ♥
+            </div>
+
+            <p>
+              This little room will always belong to you.
+            </p>
+
+            <span>
+              H × G
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         FINAL LETTER
+    ==================================================== -->
+
+    <section class="final-section section">
+
+      <div class="final-content">
+
+
+        <span class="eyebrow reveal">
+          THE LAST PAGE
+        </span>
+
+
+        <h2 class="final-title reveal">
+          My Person.
+        </h2>
+
+
+        <div class="final-letter reveal">
+
+
+          <p>
+            Gauri,
+          </p>
+
+
+          <p>
+
+            I don't think I ever properly understood
+            what love meant before you became such an
+            important part of my life.
+
+          </p>
+
+
+          <p>
+
+            We started as two people who simply knew each
+            other. Then came conversations, rainy days,
+            the café, cold coffee, countless chats and all
+            those ordinary moments that slowly became important.
+
+          </p>
+
+
+          <p>
+
+            I still remember how nervous I was when I finally
+            tried to say what I was feeling on that late July
+            night.
+
+          </p>
+
+
+          <p>
+
+            What I value most isn't one particular thing
+            about you. It's your presence, your understanding
+            and the way you have been there through different
+            parts of my life.
+
+          </p>
+
+
+          <p>
+
+            We aren't perfect. We have disagreements.
+            Sometimes we misunderstand each other.
+            Sometimes we say things we regret.
+
+            But we also come back, talk, apologize,
+            forgive, laugh again and keep learning.
+
+          </p>
+
+
+          <p>
+
+            And maybe that's what makes these memories
+            worth keeping.
+
+          </p>
+
+
+          <p>
+
+            Thank you for being part of my story.
+
+          </p>
+
+
+          <div class="signature">
+            Harshit
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         FOOTER
+    ==================================================== -->
+
+    <footer class="footer">
+
+      <div class="footer-symbol">
+        H × G
+      </div>
+
+      <p>
+        A private collection of memories.
+      </p>
+
+      <span>
+        Made with care.
+      </span>
+
+    </footer>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       GALLERY LIGHTBOX
+  ====================================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+  >
+
+    <button
+      class="modal-close"
+      id="closeLightbox"
+      aria-label="Close image"
+      type="button"
+    >
+      ×
+    </button>
+
+
+    <div class="lightbox-inner">
+
+      <img
+        id="lightboxImage"
+        src=""
+        alt=""
+      >
+
+      <p id="lightboxCaption"></p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script src="script.js"></script>
+
+
+</body>
+
+  </html>
